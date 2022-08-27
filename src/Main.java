@@ -1,6 +1,5 @@
 public class Main {
 
-    static int deliveryDays = 0;
     public static void main(String[] args) {
         //task1
         /*
@@ -34,13 +33,13 @@ public class Main {
          */
 
         deliverProduct(95);
+        deliverProduct(95);
+        deliverProduct(95);
     }
 
 
     public static void findLeapYear(int leapYear) {
-        if (leapYear % 4 == 0 && leapYear % 100 != 0){
-            System.out.println(leapYear + " год является високосным!");
-        } else if (leapYear % 400 == 0) {
+        if (leapYear % 4 == 0 && leapYear % 100 != 0 || leapYear % 400 == 0){
             System.out.println(leapYear + " год является високосным!");
         } else {
             System.out.println(leapYear + " год не является високосным.");
@@ -48,19 +47,14 @@ public class Main {
     }
 
     public static void installSoftware(int clientOS, int prodactionYear) {
-        if ( clientOS == 0 && prodactionYear < 2015) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else  if (clientOS == 1 && prodactionYear < 2015){
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        }else if (clientOS == 0 ) {
-            System.out.println("Установите версию приложения для iOS по ссылке.");
-        }
-        else {
-            System.out.println("Установите версию приложения для Android по ссылке");
-        }
+        String device = clientOS == 0 ? "iOS" : "Android";
+        String version = prodactionYear < 2015 ? "облегченную" : "";
+        System.out.printf("Установите %s версию приложения для %s по ссылке\n", version, device);
+
     }
 
     public static void deliverProduct(int deliveryDistance) {
+        int deliveryDays = 0;
         if (deliveryDistance < 20) {
             deliveryDays += 1;
             System.out.println("Для доставки банковского продукта потребуется " + deliveryDays + " дней!");
